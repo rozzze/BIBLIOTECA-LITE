@@ -1,153 +1,155 @@
-📚 Sistema de Biblioteca Virtual (Laravel 12 + Livewire)
+
+# 📚 Sistema de Biblioteca Virtual (Laravel 12 + Livewire)
+
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![Livewire](https://img.shields.io/badge/Livewire-3.x-4E56A6?style=for-the-badge&logo=livewire)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css)
+![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php)
 
 Un sistema de gestión bibliotecaria moderno, rápido y reactivo. Permite a los bibliotecarios gestionar el inventario y préstamos, y a los estudiantes reservar libros desde un catálogo digital.
 
-🚀 Requisitos Previos
+---
 
-Para ejecutar este proyecto necesitas tener instalado el siguiente software. Recomendamos encarecidamente usar Laragon en Windows para evitar problemas con versiones antiguas de PHP.
+## 🚀 Requisitos Previos
 
-Laragon: (Full edition recomendada). Asegúrate de que incluya PHP 8.2 o superior.
+Para ejecutar este proyecto necesitas tener instalado el siguiente software. Recomendamos encarecidamente usar **Laragon** en Windows para evitar problemas con versiones antiguas de PHP.
 
-Composer: Gestor de paquetes de PHP (generalmente viene con Laragon, pero verifica que esté actualizado).
+* **[Laragon](https://laragon.org/download/):** (Full edition recomendada). Asegúrate de que incluya **PHP 8.2** o superior.
+* **[Composer](https://getcomposer.org/):** Gestor de paquetes de PHP (generalmente viene con Laragon, pero verifica que esté actualizado).
+* **[Node.js](https://nodejs.org/):** Versión LTS (18 o superior) para compilar los estilos.
+* **Git:** Para clonar el repositorio.
 
-Node.js: Versión LTS (18 o superior) para compilar los estilos.
+---
 
-Git: Para clonar el repositorio.
-
-🛠️ Guía de Instalación Paso a Paso
+## 🛠️ Guía de Instalación Paso a Paso
 
 Sigue estos pasos para tener el sistema corriendo en tu máquina local.
 
-1. Clonar el Proyecto
+### 1. Clonar el Proyecto
+Abre tu terminal (o la terminal de Laragon `Cmder`) y ejecuta:
 
-Abre tu terminal (o la terminal de Laragon Cmder) y ejecuta:
-
+```bash
 git clone [https://github.com/tu-usuario/biblioteca-virtual.git](https://github.com/tu-usuario/biblioteca-virtual.git)
 cd biblioteca-virtual
+````
 
-
-2. Instalar Dependencias PHP
+### 2\. Instalar Dependencias PHP
 
 Descarga todas las librerías del framework y Spatie:
 
+```bash
 composer install
+```
 
-
-3. Instalar Dependencias Frontend
+### 3\. Instalar Dependencias Frontend
 
 Descarga las librerías de diseño (Tailwind, Alpine.js):
 
+```bash
 npm install
+```
 
-
-4. Configurar el Entorno (.env)
+### 4\. Configurar el Entorno (.env)
 
 Duplica el archivo de ejemplo para crear tu configuración:
 
+```bash
 cp .env.example .env
-
+```
 
 Genera la clave de encriptación de la aplicación:
 
+```bash
 php artisan key:generate
+```
 
+### 5\. Configurar la Base de Datos
 
-5. Configurar la Base de Datos
+1.  Abre **Laragon** y haz clic en **Iniciar Todo**.
+2.  Haz clic en el botón **Base de Datos** (abrirá HeidiSQL o phpMyAdmin).
+3.  Crea una nueva base de datos llamada: `biblioteca_virtual` (cotejamiento `utf8mb4_general_ci`).
+4.  *(Opcional)* Si tu usuario de MySQL no es `root` sin contraseña, edita el archivo `.env` con tus credenciales.
 
-Abre Laragon y haz clic en Iniciar Todo.
-
-Haz clic en el botón Base de Datos (abrirá HeidiSQL o phpMyAdmin).
-
-Crea una nueva base de datos llamada: biblioteca_virtual (cotejamiento utf8mb4_general_ci).
-
-(Opcional) Si tu usuario de MySQL no es root sin contraseña, edita el archivo .env con tus credenciales.
-
-6. Migrar y Sembrar Datos (Seeders)
+### 6\. Migrar y Sembrar Datos (Seeders)
 
 Este comando creará las tablas, los roles (Bibliotecario/Estudiante) y los usuarios de prueba:
 
+```bash
 php artisan migrate --seed
+```
 
-
-7. Enlace Simbólico de Imágenes
+### 7\. Enlace Simbólico de Imágenes
 
 Para que las portadas de los libros sean visibles:
 
+```bash
 php artisan storage:link
+```
 
+-----
 
-▶️ Ejecutar el Proyecto
+## ▶️ Ejecutar el Proyecto
 
 Necesitarás dos terminales abiertas simultáneamente:
 
-Terminal 1 (Compilación de estilos en tiempo real):
+**Terminal 1 (Compilación de estilos en tiempo real):**
 
+```bash
 npm run dev
+```
 
+**Terminal 2 (Servidor Laravel):**
 
-Terminal 2 (Servidor Laravel):
-
+```bash
 php artisan serve
+```
 
+Ahora abre tu navegador y entra a: [http://127.0.0.1:8000](https://www.google.com/search?q=http://127.0.0.1:8000)
 
-Ahora abre tu navegador y entra a: http://127.0.0.1:8000
+-----
 
-🔑 Usuarios de Prueba
+## 🔑 Usuarios de Prueba
 
 El sistema viene pre-cargado con estos usuarios para que puedas probar todos los roles.
 
-👨‍💼 Rol: Bibliotecario (Administrador)
+### 👨‍💼 Rol: Bibliotecario (Administrador)
 
-Tiene acceso total: Gestión de libros, préstamos, devoluciones y cobro de multas.
+*Tiene acceso total: Gestión de libros, préstamos, devoluciones y cobro de multas.*
 
-Credencial
+| Credencial | Valor |
+| :--- | :--- |
+| **Email** | `admin@biblioteca.com` |
+| **Contraseña** | `password` |
 
-Valor
+### 🎓 Rol: Estudiante
 
-Email
+*Puede ver el catálogo, reservar libros y ver su historial de préstamos.*
 
-admin@biblioteca.com
+| Credencial | Valor |
+| :--- | :--- |
+| **Email** | `student@biblioteca.com` |
+| **Contraseña** | `password` |
 
-Contraseña
+-----
 
-password
-
-🎓 Rol: Estudiante
-
-Puede ver el catálogo, reservar libros y ver su historial de préstamos.
-
-Credencial
-
-Valor
-
-Email
-
-student@biblioteca.com
-
-Contraseña
-
-password
-
-📂 Estructura de Módulos Clave
+## 📂 Estructura de Módulos Clave
 
 Si necesitas editar el código, aquí están los archivos principales:
 
-📚 Libros: app/Livewire/Admin/BookManager.php
+  * **📚 Libros:** `app/Livewire/Admin/BookManager.php`
+  * **🔄 Préstamos:** `app/Livewire/Admin/LoanManager.php`
+  * **💰 Multas:** `app/Livewire/Admin/PenaltyManager.php`
+  * **🔎 Catálogo:** `app/Livewire/Student/BookCatalog.php`
+  * **👤 Mis Libros:** `app/Livewire/Student/MyLoans.php`
 
-🔄 Préstamos: app/Livewire/Admin/LoanManager.php
+-----
 
-💰 Multas: app/Livewire/Admin/PenaltyManager.php
+## 🐛 Solución de Problemas Comunes
 
-🔎 Catálogo: app/Livewire/Student/BookCatalog.php
+  * **Error "Vite manifest not found":** Olvidaste ejecutar `npm run dev` o `npm run build`.
+  * **Error de base de datos:** Verifica que Laragon (MySQL) esté iniciado y que el nombre en el `.env` coincida.
+  * **Imágenes no cargan:** Asegúrate de haber ejecutado `php artisan storage:link`.
 
-👤 Mis Libros: app/Livewire/Student/MyLoans.php
-
-🐛 Solución de Problemas Comunes
-
-Error "Vite manifest not found": Olvidaste ejecutar npm run dev o npm run build.
-
-Error de base de datos: Verifica que Laragon (MySQL) esté iniciado y que el nombre en el .env coincida.
-
-Imágenes no cargan: Asegúrate de haber ejecutado php artisan storage:link.
+-----
 
 Hecho con ❤️ para la gestión educativa.
