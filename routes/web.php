@@ -7,6 +7,7 @@ use App\Livewire\Admin\BookManager;
 use App\Livewire\Admin\LoanManager;
 use App\Livewire\Student\BookCatalog;
 use App\Livewire\Admin\PenaltyManager;
+use App\Livewire\Student\MyLoans;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('two-factor.show');
 
     Route::get('/catalogo', BookCatalog::class)->name('student.catalog');
+    Route::get('/mis-libros', MyLoans::class)->name('student.loans');
 });
 
 // Grupo protegido: Solo autenticados Y con rol de bibliotecario

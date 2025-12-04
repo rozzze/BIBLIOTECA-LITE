@@ -31,4 +31,10 @@ class Loan extends Model
     {
         return $query->where('status', 'active');
     }
+
+    public function penalty()
+    {
+        return $this->hasOne(Penalty::class);
+    }
+
 }

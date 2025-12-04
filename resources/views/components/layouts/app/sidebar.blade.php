@@ -33,6 +33,9 @@
                         <flux:navlist.item icon="magnifying-glass" :href="route('student.catalog')" :current="request()->routeIs('student.catalog')" wire:navigate>
                             {{ __('Catálogo Libros') }}
                         </flux:navlist.item>
+                        <flux:navlist.item icon="book-open" :href="route('student.loans')" :current="request()->routeIs('student.loans')" wire:navigate>
+                            {{ __('Mis Libros') }}
+                        </flux:navlist.item>
                     @endrole
 
                 </flux:navlist.group>
